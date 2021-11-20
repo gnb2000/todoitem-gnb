@@ -11,7 +11,7 @@ public class ItemControllerTest extends TestCase {
 
     public void testCreateItem() {
         try {
-            ItemController.getInstance().createItem("Lavar los platos",1,1);
+            ItemController.getInstance().createItem("Lavar los platos",1);
         } catch (FolderException | UserException e){
             System.out.println(e.getMessage());
         }

@@ -21,8 +21,8 @@ public class ItemRestController {
 	
 	@PostMapping("/createItem")
 	@CrossOrigin(origins="http://localhost:3000/")
-	public void createItem(@RequestParam(name="description") String description, @RequestParam(name="folder_id") Integer folder_id, @RequestParam(name="user_id") Integer user_id) throws FolderException, UserException {
-		ItemController.getInstance().createItem(description,folder_id,user_id);
+	public void createItem(@RequestParam(name="description") String description, @RequestParam(name="folder_id") Integer folder_id) throws FolderException, UserException {
+		ItemController.getInstance().createItem(description,folder_id);
 	}
 	
 	@PutMapping("/editItem")

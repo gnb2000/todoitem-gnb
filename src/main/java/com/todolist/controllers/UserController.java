@@ -32,4 +32,8 @@ public class UserController {
         user.setStatus(false);
         user.update();
     }
+
+    public boolean userAvailable(Integer id){
+        return UserDAO.getInstance().userAvailable(id);
+    }
 }

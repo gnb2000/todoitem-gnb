@@ -1,6 +1,7 @@
 package com.todolist.restControllers;
 import java.util.List;
 
+import com.todolist.exceptions.UserException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,8 +19,12 @@ public class FolderRestController {
 	
 	@PostMapping("/createFolder")
 	@CrossOrigin(origins="http://localhost:3000/")
-	public void createFolder(@RequestParam(name="name") String name) {
-		FolderController.getInstance().createFolder(name);
+	public void createFolder(@RequestParam(name="name") String name, @RequestParam(name="user_id") Integer user_id) {
+		try {
+			FolderController.getInstance().createFolder(name,user_id);
+		} catch (UserException e) {
+			System.out.println(e.getMessage());
+		}
 	}
 	
 	@DeleteMapping("/deleteFolder")

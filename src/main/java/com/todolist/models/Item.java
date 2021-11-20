@@ -25,18 +25,16 @@ public class Item {
 	private Folder folder;
 
 	private boolean isEliminated;
-	@ManyToOne
-	@JoinColumn(name="user_id")
-	private User user;
+
 	
 	public Item() {}
 	
-	public Item(String description, Folder folder, User user) {
+	public Item(String description, Folder folder) {
 		this.description = description;
 		this.status = false;
 		this.folder = folder;
 		this.isEliminated = false;
-		this.user = user;
+
 	}
 
 	public Folder getFolder() {
@@ -89,13 +87,7 @@ public class Item {
 		this.isEliminated = status;
 	}
 
-	public User getUser() {
-		return user;
-	}
 
-	public void setUser(User user) {
-		this.user = user;
-	}
 
 	public void save() {
 		ItemDAO.getInstance().saveItem(this);

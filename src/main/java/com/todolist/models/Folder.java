@@ -19,12 +19,16 @@ public class Folder {
 	
 	@OneToMany(mappedBy="folder", orphanRemoval=true, cascade = CascadeType.ALL)
 	private List<Item> items;
+
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	public Folder() {}
 	
-	public Folder(String name) {
+	public Folder(String name, User user) {
 		this.name = name;
-		
+		this.user = user;
 	}
 
 	public Integer getId() {
@@ -33,6 +37,14 @@ public class Folder {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getName() {

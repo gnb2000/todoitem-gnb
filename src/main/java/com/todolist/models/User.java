@@ -15,7 +15,7 @@ public class User {
     private String username;
     private String password; //Password should be hashed
     @OneToMany(mappedBy="user", orphanRemoval=true, cascade = CascadeType.ALL)
-    private List<Item> items;
+    private List<Folder> folders;
     private boolean status;
 
     public User(){}
@@ -51,13 +51,6 @@ public class User {
         this.password = password;
     }
 
-    public List<Item> getItems() {
-        return items;
-    }
-
-    public void setItems(List<Item> items) {
-        this.items = items;
-    }
 
     public boolean isStatus() {
         return status;

@@ -49,5 +49,16 @@ public class UserDAO {
         em.close();
     }
 
+    public boolean userAvailable(Integer id){
+        try{
+            EntityManager em = EManagerUtil.getEntityManager();
+            User user = (User) em.createQuery("FROM User WHERE status = true AND id="+id).getSingleResult();
+            em.close();
+            return true;
+        } catch (NoResultException e){
+            return false;
+        }
+    }
+
 
 }

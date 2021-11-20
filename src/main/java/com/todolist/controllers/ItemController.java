@@ -27,10 +27,9 @@ public class ItemController {
 		return instance;
 	}
 	
-	public void createItem(String description, Integer folderId, Integer userId) throws FolderException, UserException {
+	public void createItem(String description, Integer folderId) throws FolderException, UserException {
 		Folder folder = FolderDAO.getInstance().getFolderById(folderId);
-		User user = UserDAO.getInstance().getUserById(userId);
-		Item newItem = new Item(description,folder,user);
+		Item newItem = new Item(description,folder);
 		newItem.save();
 	}
 	

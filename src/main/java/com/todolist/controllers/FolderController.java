@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.todolist.daos.FolderDAO;
+import com.todolist.daos.UserDAO;
 import com.todolist.exceptions.FolderException;
+import com.todolist.exceptions.UserException;
 import com.todolist.models.Folder;
+import com.todolist.models.User;
 import com.todolist.vo.FolderVO;
 
 public class FolderController {
@@ -21,8 +24,9 @@ public class FolderController {
 		return instance;
 	}
 	
-	public void createFolder(String name) {
-		Folder folder = new Folder(name);
+	public void createFolder(String name, Integer userId) throws UserException {
+		User user = UserDAO.getInstance().getUserById(userId);
+		Folder folder = new Folder(name,user);
 		folder.save();
 	}
 	
