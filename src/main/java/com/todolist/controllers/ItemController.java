@@ -5,10 +5,13 @@ import java.util.List;
 
 import com.todolist.daos.FolderDAO;
 import com.todolist.daos.ItemDAO;
+import com.todolist.daos.UserDAO;
 import com.todolist.exceptions.FolderException;
 import com.todolist.exceptions.ItemException;
+import com.todolist.exceptions.UserException;
 import com.todolist.models.Folder;
 import com.todolist.models.Item;
+import com.todolist.models.User;
 import com.todolist.vo.ItemVO;
 
 public class ItemController {
@@ -24,9 +27,10 @@ public class ItemController {
 		return instance;
 	}
 	
-	public void createItem(String description, Integer folderId) throws FolderException {
+	public void createItem(String description, Integer folderId, Integer userId) throws FolderException, UserException {
 		Folder folder = FolderDAO.getInstance().getFolderById(folderId);
-		Item newItem = new Item(description,folder);
+		User user = UserDAO.getInstance().getUserById(userId);
+		Item newItem = new Item(description,folder,user);
 		newItem.save();
 	}
 	

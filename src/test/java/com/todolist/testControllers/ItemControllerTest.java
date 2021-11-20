@@ -3,15 +3,16 @@ package com.todolist.testControllers;
 import com.todolist.controllers.ItemController;
 import com.todolist.exceptions.FolderException;
 import com.todolist.exceptions.ItemException;
+import com.todolist.exceptions.UserException;
 import com.todolist.models.Folder;
 import junit.framework.TestCase;
 
 public class ItemControllerTest extends TestCase {
 
-    public void testCreateItem() throws FolderException {
+    public void testCreateItem() {
         try {
-            ItemController.getInstance().createItem("Lavar los platos",7);
-        } catch (FolderException e){
+            ItemController.getInstance().createItem("Lavar los platos",1,1);
+        } catch (FolderException | UserException e){
             System.out.println(e.getMessage());
         }
     }

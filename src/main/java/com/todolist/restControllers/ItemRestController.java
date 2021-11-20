@@ -2,6 +2,7 @@ package com.todolist.restControllers;
 
 import java.util.List;
 
+import com.todolist.exceptions.UserException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,8 +21,8 @@ public class ItemRestController {
 	
 	@PostMapping("/createItem")
 	@CrossOrigin(origins="http://localhost:3000/")
-	public void createItem(@RequestParam(name="description") String description, @RequestParam(name="folder_id") Integer folder_id) throws FolderException {
-		ItemController.getInstance().createItem(description,folder_id);
+	public void createItem(@RequestParam(name="description") String description, @RequestParam(name="folder_id") Integer folder_id, @RequestParam(name="user_id") Integer user_id) throws FolderException, UserException {
+		ItemController.getInstance().createItem(description,folder_id,user_id);
 	}
 	
 	@PutMapping("/editItem")

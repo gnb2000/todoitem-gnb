@@ -19,20 +19,24 @@ public class Item {
 	
 	private String description;
 	private boolean status;
+
 	@ManyToOne
 	@JoinColumn(name="folder")
 	private Folder folder;
 
 	private boolean isEliminated;
-	
+	@ManyToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	public Item() {}
 	
-	public Item(String description, Folder folder) {
+	public Item(String description, Folder folder, User user) {
 		this.description = description;
 		this.status = false;
 		this.folder = folder;
 		this.isEliminated = false;
+		this.user = user;
 	}
 
 	public Folder getFolder() {
@@ -58,7 +62,8 @@ public class Item {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
+
 	
 	public boolean getStatus() {
 		return status;
@@ -84,6 +89,14 @@ public class Item {
 		this.isEliminated = status;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	public void save() {
 		ItemDAO.getInstance().saveItem(this);
 	}
@@ -96,6 +109,8 @@ public class Item {
 		
 		ItemDAO.getInstance().deleteItem(this);
 	}
+
+
 	
 	public ItemVO toVo() {
 		return new ItemVO(this.id, this.description,this.status,this.folder.getId());
