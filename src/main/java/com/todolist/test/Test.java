@@ -10,8 +10,7 @@ public class Test {
 	public static void main(String[] args) throws ItemException, FolderException {
 		
 		//Create folder
-		FolderController.getInstance().createFolder("Recordatorios semanales");
-		
+
 		//Delete folder
 		//FolderController.getInstance().deleteFolder(1);
 		
