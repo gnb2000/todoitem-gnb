@@ -4,6 +4,7 @@ import ListItems from '../components/ListItems';
 import AddItem from '../components/AddItem';
 import axios from 'axios';
 import ListFolders from '../components/ListFolders';
+import AddFolder from '../components/AddFolder';
 
 function Home(){
     
@@ -15,6 +16,7 @@ function Home(){
             <div className="container mt-4">
                 <div className="row text-center">
                     <h2>Folders</h2>
+                    <AddFolder/>
                     <ListFolders/>
                 </div>
 

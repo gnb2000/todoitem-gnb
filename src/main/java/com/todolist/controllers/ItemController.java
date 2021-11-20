@@ -38,11 +38,10 @@ public class ItemController {
 	}
 	
 	public void deleteItem(Integer itemId) throws ItemException, FolderException {
-		Folder folder = FolderDAO.getInstance().getFolderByItemId(itemId);
 		Item item = ItemDAO.getInstance().getItemById(itemId);
-		folder.getItems().remove(item);
-		System.out.println(folder.getItems().size());
 		//item.delete();
+		item.setEliminated(true);
+		item.update();
 	}
 	
 	public void updateStatus(Integer itemId, boolean status) throws ItemException {

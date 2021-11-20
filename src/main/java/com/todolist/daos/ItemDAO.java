@@ -60,7 +60,7 @@ public class ItemDAO {
 	public List<Item> getAllItems() throws ItemException{
 		try {
 			EntityManager em = EManagerUtil.getEntityManager();
-			List<Item> items = em.createQuery("FROM Item").getResultList();
+			List<Item> items = em.createQuery("FROM Item WHERE isEliminated = 1").getResultList();
 			em.close();
 			return items;
 		} catch(NoResultException e) {
@@ -71,7 +71,7 @@ public class ItemDAO {
 	public List<Item> getItemsByFolderId(Integer folder_id) throws ItemException {
 		try {
 			EntityManager em = EManagerUtil.getEntityManager();
-			List<Item> items = em.createQuery("FROM Item WHERE folder="+folder_id).getResultList();
+			List<Item> items = em.createQuery("FROM Item WHERE isEliminated = false AND folder="+folder_id).getResultList();
 			em.close();
 			return items;
 		} catch(NoResultException e) {

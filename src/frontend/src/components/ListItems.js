@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import EditItem from './EditItem';
+import { useParams} from 'react-router-dom';
+
 
 
 function ListItems(){
     const [items,setItems] = useState([]); 
     const [showEdit, setShowEdit] = useState(false);
+    let params = useParams();
+
 
     useEffect(() => {
-        axios.get("http://localhost:8080/getAllItems")
+        axios.get("http://localhost:8080/getItemsByFolderId?folder_id="+params.id)
             .then(response => {
                 setItems(response.data);
             })
@@ -25,7 +29,7 @@ function ListItems(){
         console.log("hola");
         axios.delete("http://localhost:8080/deleteItem?itemId="+itemId)
             .then(response => {
-               // window.location.reload(true);
+               window.location.reload(true);
             })
     }
 

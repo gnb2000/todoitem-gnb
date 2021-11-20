@@ -22,6 +22,8 @@ public class Item {
 	@ManyToOne
 	@JoinColumn(name="folder")
 	private Folder folder;
+
+	private boolean isEliminated;
 	
 	
 	public Item() {}
@@ -30,6 +32,7 @@ public class Item {
 		this.description = description;
 		this.status = false;
 		this.folder = folder;
+		this.isEliminated = false;
 	}
 
 	public Folder getFolder() {
@@ -71,6 +74,14 @@ public class Item {
 		} else {
 			this.status = true;
 		}
+	}
+
+	public boolean getIsEliminated(){
+		return this.isEliminated;
+	}
+
+	public void setEliminated(boolean status){
+		this.isEliminated = status;
 	}
 
 	public void save() {
