@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.todolist.daos.FolderDAO;
+import com.todolist.daos.ItemDAO;
 import com.todolist.daos.UserDAO;
 import com.todolist.exceptions.FolderException;
+import com.todolist.exceptions.ItemException;
 import com.todolist.exceptions.UserException;
 import com.todolist.models.Folder;
+import com.todolist.models.Item;
 import com.todolist.models.User;
 import com.todolist.vo.FolderVO;
 
@@ -30,9 +33,12 @@ public class FolderController {
 		folder.save();
 	}
 	
-	public void deleteFolder(Integer id) throws FolderException {
+	public void deleteFolder(Integer id) throws FolderException, ItemException {
 		Folder folder = FolderDAO.getInstance().getFolderById(id);
-		folder.delete();
+		//folder.delete();
+		folder.setEliminated(true);
+		ItemDAO.getInstance().deleteItemsFolder(folder.getId());
+		folder.update();
 	}
 	
 	public FolderVO getFolderById(Integer folder_id) throws FolderException {
@@ -50,6 +56,15 @@ public class FolderController {
 	
 	public FolderVO getFolderByItemId(Integer itemId) throws FolderException {
 		return FolderDAO.getInstance().getFolderByItemId(itemId).toVo();
+	}
+
+	public List<FolderVO> getFoldersByUserId(Integer userId) throws FolderException {
+		List<Folder> folders = FolderDAO.getInstance().getFoldersByUserId(userId);
+		List<FolderVO> foldersVO = new ArrayList<FolderVO>();
+		for (Folder folder : folders) {
+			foldersVO.add(folder.toVo());
+		}
+		return foldersVO;
 	}
 	
 	

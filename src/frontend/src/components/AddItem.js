@@ -28,8 +28,7 @@ function AddItem(){
     return (
         <>
             <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
-                <div onSubmit={handleItemSubmit}>
-                    <form>
+                <form onSubmit={handleItemSubmit}>
                         <div className="row">
                             <div className="col-md-8">
                                 <input type="text" class="form-control" value={item} onChange={handleItemChange} id="item" placeholder="Take a shower"/>
@@ -39,9 +38,8 @@ function AddItem(){
                             </div>
 
                         </div>
-                    </form>
                    
-                </div>
+                </form>
                 
             </div>
 

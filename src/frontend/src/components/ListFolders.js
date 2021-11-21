@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useParams } from 'react-router';
 
 
 
 function ListFolders(){
 
     const [folders,setFolders] = useState([]);
+    let params = useParams();
 
 
     useEffect(() => {
-        axios.get("http://localhost:8080/getAllFolders")
+        axios.get("http://localhost:8080/getFoldersByUserId?user_id="+params.id)
             .then(response => {
                 setFolders(response.data);
             })
     },[])
 
     function handleDeleteFolder(id){
+        console.log(id);
         axios.delete("http://localhost:8080/deleteFolder?folder_id="+id)
             .then(response => {
                 window.location.reload(true);

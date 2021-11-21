@@ -20,10 +20,10 @@ public class UserRestController {
         return UserController.getInstance().getUserById(user_id);
     }
 
-    @RequestMapping("/userAvailable")
+    @RequestMapping("/getUserByUsernameAndPassword")
     @CrossOrigin(origins="http://localhost:3000/")
-    public boolean userAvailable(@RequestParam(name="user_id") int user_id){
-        return UserController.getInstance().userAvailable(user_id);
+    public UserVO getUserByUsernameAndPassword(@RequestParam(name="username") String username, @RequestParam(name="password") String password) throws UserException {
+        return UserController.getInstance().getUserByUsernameAndPassword(username, password);
     }
 
 

@@ -5,6 +5,7 @@ import {useParams} from 'react-router';
 function AddFolder(){
 
     const [folder, setFolder] = useState("");
+    let params = useParams();
     
     function handleFolderChange(e){
         setFolder(e.target.value);
@@ -13,7 +14,7 @@ function AddFolder(){
 
     function handleFolderSubmit(e){
         e.preventDefault();
-        axios.post("http://localhost:8080/createFolder?name="+folder)
+        axios.post("http://localhost:8080/createFolder?name="+folder+"&user_id="+params.id)
             .then(response => {
                 window.location.reload(true);
             })

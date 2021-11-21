@@ -1,6 +1,7 @@
 package com.todolist.restControllers;
 import java.util.List;
 
+import com.todolist.exceptions.ItemException;
 import com.todolist.exceptions.UserException;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,7 +30,7 @@ public class FolderRestController {
 	
 	@DeleteMapping("/deleteFolder")
 	@CrossOrigin(origins="http://localhost:3000/")
-	public void deleteFolder(@RequestParam(name="folder_id") Integer folder_id) throws FolderException {
+	public void deleteFolder(@RequestParam(name="folder_id") Integer folder_id) throws FolderException, ItemException {
 		FolderController.getInstance().deleteFolder(folder_id);
 	}
 	
@@ -43,6 +44,12 @@ public class FolderRestController {
 	@CrossOrigin(origins="http://localhost:3000/")
 	public List<FolderVO> getAllFolders() throws FolderException {
 		return FolderController.getInstance().getAllFolders();
+	}
+
+	@RequestMapping("/getFoldersByUserId")
+	@CrossOrigin(origins="http://localhost:3000/")
+	public List<FolderVO> getFoldersByUserId(@RequestParam(name="user_id") Integer user_id) throws FolderException {
+		return FolderController.getInstance().getFoldersByUserId(user_id);
 	}
 
 

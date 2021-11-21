@@ -18,4 +18,12 @@ public class UserControllerTest extends TestCase {
             System.out.println(e.getMessage());
         }
     }
+
+    public void testGetUserByUsernameAndPassword(){
+        try {
+            System.out.println(UserController.getInstance().getUserByUsernameAndPassword("admin","admin").getUsername());
+        } catch (UserException e){
+            System.out.println(e.getMessage());
+        }
+    }
 }

@@ -28,7 +28,7 @@ public class FolderDAO {
 	public Folder getFolderById(Integer folderId) throws FolderException {
 		try {
 			EntityManager em = EManagerUtil.getEntityManager();
-			Folder folder = (Folder) em.createQuery("FROM Folder WHERE id="+folderId).getSingleResult();
+			Folder folder = (Folder) em.createQuery("FROM Folder WHERE isEliminated = false AND id="+folderId).getSingleResult();
 			em.close();
 			return folder;
 		} catch (NoResultException e) {
@@ -51,6 +51,14 @@ public class FolderDAO {
 		em.getTransaction().commit();
 		em.close();
 	}
+
+	public void update(Folder folder){
+		EntityManager em = EManagerUtil.getEntityManager();
+		em.getTransaction().begin();
+		em.merge(folder);
+		em.getTransaction().commit();
+		em.close();
+	}
 	
 	public List<Folder> getAllFolders() throws FolderException{
 		try {
@@ -66,7 +74,7 @@ public class FolderDAO {
 	public Folder getFolderByItemId(Integer itemId) throws FolderException{
 		try {
 			EntityManager em = EManagerUtil.getEntityManager();
-			Folder folder = (Folder) em.createQuery("SELECT f FROM Folder f INNER JOIN f.items i WHERE i.id="+itemId).getSingleResult();
+			Folder folder = (Folder) em.createQuery("SELECT f FROM Folder f INNER JOIN f.items i WHERE f.isEliminated = false AND  i.id="+itemId).getSingleResult();
 			System.out.println(folder.getItems().size());
 			em.close();
 			return folder;
@@ -75,16 +83,16 @@ public class FolderDAO {
 		}
 	}
 	
-	public void deleteItemFromFolder(Integer itemId) throws ItemException, FolderException {
+
+
+	public List<Folder> getFoldersByUserId(Integer userId) throws FolderException {
 		try {
 			EntityManager em = EManagerUtil.getEntityManager();
-			Folder folder = (Folder) em.createQuery("SELECT f FROM Folder f INNER JOIN f.items i WHERE i.id="+itemId).getSingleResult();
-			Item item = ItemDAO.getInstance().getItemById(itemId);
-			folder.getItems().remove(item);
-			folder.save();
+			List<Folder> folders = (List<Folder>) em.createQuery("FROM Folder WHERE isEliminated = false AND user_id="+userId).getResultList();
 			em.close();
+			return folders;
 		} catch (NoResultException e) {
-			throw new FolderException("Folders not found");
+			throw new FolderException("Folders not found with user id "+userId);
 		}
 	}
 

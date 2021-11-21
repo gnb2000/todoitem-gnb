@@ -23,12 +23,15 @@ public class Folder {
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private User user;
+
+	private boolean isEliminated;
 	
 	public Folder() {}
 	
 	public Folder(String name, User user) {
 		this.name = name;
 		this.user = user;
+		this.isEliminated = false;
 	}
 
 	public Integer getId() {
@@ -66,6 +69,10 @@ public class Folder {
 	public void save() {
 		FolderDAO.getInstance().saveFolder(this);
 	}
+
+	public void update(){
+		FolderDAO.getInstance().update(this);
+	}
 	
 	public void delete() {
 		FolderDAO.getInstance().deleteFolder(this);
@@ -74,7 +81,12 @@ public class Folder {
 	public FolderVO toVo() {
 		return new FolderVO(this.id,this.name);
 	}
-	
-	
 
+	public boolean isEliminated() {
+		return isEliminated;
+	}
+
+	public void setEliminated(boolean eliminated) {
+		this.isEliminated = eliminated;
+	}
 }

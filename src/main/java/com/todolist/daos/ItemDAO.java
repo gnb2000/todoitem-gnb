@@ -78,6 +78,18 @@ public class ItemDAO {
 			throw new ItemException("Items not found with folder id "+folder_id);
 		}
 	}
+
+	public void deleteItemsFolder(Integer folder_id) throws ItemException {
+		EntityManager em = EManagerUtil.getEntityManager();
+		em.getTransaction().begin();
+		List<Item> items = this.getItemsByFolderId(folder_id);
+		for (Item item : items){
+			item.setEliminated(true);
+			item.update();
+		}
+		em.getTransaction().commit();
+		em.close();
+	}
 	
 	
 

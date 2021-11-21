@@ -33,7 +33,7 @@ public class UserController {
         user.update();
     }
 
-    public boolean userAvailable(Integer id){
-        return UserDAO.getInstance().userAvailable(id);
+    public UserVO getUserByUsernameAndPassword(String username, String password) throws UserException {
+        return UserDAO.getInstance().getUserByUsernameAndPassword(username, password).toVO();
     }
 }

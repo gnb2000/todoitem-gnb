@@ -11,13 +11,16 @@ import {
 } from "react-router-dom";
 import Home from './pages/Home';
 import Items from './pages/Items';
+import Login from './pages/Login';
+
 
 function App() {
   return (
     
       <Router>
         <Switch>
-          <Route path="/home" component={Home}/>
+          <Route path="/home/:id" component={Home}/>
+          <Route path="/login" component={Login}/>
           <Route exact path="/items/:id" component={Items}/>
           <Route path="" component={Home}/>
           

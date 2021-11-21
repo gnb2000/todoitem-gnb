@@ -49,16 +49,17 @@ public class UserDAO {
         em.close();
     }
 
-    public boolean userAvailable(Integer id){
+    public User getUserByUsernameAndPassword(String username, String password) throws UserException {
         try{
             EntityManager em = EManagerUtil.getEntityManager();
-            User user = (User) em.createQuery("FROM User WHERE status = true AND id="+id).getSingleResult();
+            User user = (User) em.createQuery("SELECT u FROM User u WHERE u.username='"+username+"' AND u.password='"+password+"'").getSingleResult();
             em.close();
-            return true;
+            return user;
         } catch (NoResultException e){
-            return false;
+            throw new UserException("User not found with username "+username+" and password "+password);
         }
     }
+
 
 
 }
