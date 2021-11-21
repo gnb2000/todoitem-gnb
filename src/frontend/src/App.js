@@ -21,8 +21,8 @@ function App() {
         <Switch>
           <Route path="/home/:id" component={Home}/>
           <Route path="/login" component={Login}/>
-          <Route exact path="/items/:id" component={Items}/>
-          <Route path="" component={Home}/>
+          <Route exact path="/items/:id/:user" component={Items}/>
+          <Route path="" component={Login}/>
           
           
           

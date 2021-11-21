@@ -63,7 +63,7 @@ function ListItems(){
                                         </div>
                                     </th>
                                     <td>{item.description}</td>
-                                    <td>{item.status === false ? <p>Pending</p> : <p>Done</p>}</td>
+                                    <td>{item.status === false ? <span class="badge bg-warning text-dark">Pending</span> : <span class="badge bg-success">Done</span>}</td>
                                     <td>
                                             <EditItem id={item.id}/>
                                             <button class="btn btn-danger" onClick={() => handleDeleteItem(item.id)} aria-current="page">
