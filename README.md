@@ -42,3 +42,10 @@ Using Spring Boot, React, SQL Server and Bootstrap
 
 - If you don't want to run "testCreateUser", just create a new account using Login Interface
 
+# Preview
+
+![image](https://user-images.githubusercontent.com/69126392/142767162-4d2a18fa-20b0-4c1d-8fb4-b41f8d2315fd.png)
+![image](https://user-images.githubusercontent.com/69126392/142767177-a15e263d-42b3-480a-9606-b8b5cf082b9b.png)
+![image](https://user-images.githubusercontent.com/69126392/142767181-d0a98865-0baf-4395-bbf7-a3df51892ee9.png)
+
+
