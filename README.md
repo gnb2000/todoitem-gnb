@@ -8,7 +8,7 @@ Using Spring Boot, React, SQL Server and Bootstrap
 - Maven
 - SQL Server
 - React
-- Intelijj
+- Intellij
 - Visual studio code
 
 
