@@ -45,29 +45,29 @@ function CreateAccount(){
     
     return (
         <>
-            <button class="btn btn-warning text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Create account</button>
+            <button className="btn btn-warning text-dark" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Create account</button>
             <ToastContainer/>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-                <div class="offcanvas-header">
+                <div className="offcanvas-header">
                     <h5 id="offcanvasRightLabel">Create new account</h5>
-                    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <div class="offcanvas-body">
+                <div className="offcanvas-body">
                     <form>
-                        <div class="mb-3">
-                            <label class="form-label">Username</label>
-                            <input type="text" value={newUsername} onChange={handleNewUsernameChange}  class="form-control" id="username"/>
+                        <div className="mb-3">
+                            <label className="form-label">Username</label>
+                            <input type="text" value={newUsername} onChange={handleNewUsernameChange}  className="form-control" id="username"/>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Password</label>
-                            <input type="password" value={newPassword} onChange={handleNewPasswordChange} class="form-control" id="password"/>
+                        <div className="mb-3">
+                            <label className="form-label">Password</label>
+                            <input type="password" value={newPassword} onChange={handleNewPasswordChange} className="form-control" id="password"/>
                         </div>
-                        <div class="mb-3">
-                            <label class="form-label">Confirm password</label>
-                            <input type="password" value={confirmPass} onChange={handleConfirmPassChange} class="form-control" id="password"/>
+                        <div className="mb-3">
+                            <label className="form-label">Confirm password</label>
+                            <input type="password" value={confirmPass} onChange={handleConfirmPassChange} className="form-control" id="password"/>
                         </div>
 
-                        <button type="button" onClick={handleNewAccountSubmit} class="btn btn-success">Register</button>
+                        <button type="button" onClick={handleNewAccountSubmit} className="btn btn-success">Register</button>
                     </form>
                 </div>
             </div>

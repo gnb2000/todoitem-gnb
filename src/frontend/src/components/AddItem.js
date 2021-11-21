@@ -27,14 +27,14 @@ function AddItem(){
 
     return (
         <>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
+            <div className="d-grid gap-2 d-md-flex justify-content-md-end mb-3">
                 <form onSubmit={handleItemSubmit}>
                         <div className="row">
                             <div className="col-md-8">
-                                <input type="text" class="form-control" value={item} onChange={handleItemChange} id="item" placeholder="Take a shower"/>
+                                <input type="text" className="form-control" value={item} onChange={handleItemChange} id="item" placeholder="Take a shower"/>
                             </div>
                             <div className="text-center mt-2 mb-3 m-md-0 col-md-4">
-                                <button class="btn btn-success me-md-2" type="submit">Add</button>
+                                <button className="btn btn-success me-md-2" type="submit">Add</button>
                             </div>
 
                         </div>

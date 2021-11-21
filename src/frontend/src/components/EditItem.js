@@ -44,17 +44,17 @@ function EditItem(props){
                     <div className="modal-content">
                         <div className="modal-header">
                             <h5 className="modal-title" id="exampleModalLabel">Edit item</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
                             {item.length !== 0 ? 
                                 <form onSubmit={handleEditSubmit}>
                                     <div className="mb-3">
-                                        <label class="form-label">Description</label>
-                                        <input type="text" class="form-control" id="item" value={desc} onChange={handleDescriptionChange} placeholder="Take a shower"/>
+                                        <label className="form-label">Description</label>
+                                        <input type="text" className="form-control" id="item" value={desc} onChange={handleDescriptionChange} placeholder="Take a shower"/>
                                     </div>
                                     <div className="mt-4">
-                                        <button class="btn btn-success me-md-2" type="submit">Update</button>
+                                        <button className="btn btn-success me-md-2" type="submit">Update</button>
                                     </div>
 
                                 </form>

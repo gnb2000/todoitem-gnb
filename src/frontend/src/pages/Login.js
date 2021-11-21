@@ -34,16 +34,16 @@ function Login(){
             <div className="p-5 bg-light shadow">
                 <h4>Welcome to To-Do-Item</h4>
                 <form className="mt-3" onSubmit={handleLoginSubmit}>
-                    <div class="mb-3">
+                    <div className="mb-3">
                         <label class="form-label">Username</label>
-                        <input type="text" value={username} onChange={handleUsernameChange} class="form-control" id="username"/>
+                        <input type="text" value={username} onChange={handleUsernameChange} className="form-control" id="username"/>
                     </div>
-                    <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <input type="password" value={password} onChange={handlePasswordChange} class="form-control" id="password"/>
+                    <div className="mb-3">
+                        <label className="form-label">Password</label>
+                        <input type="password" value={password} onChange={handlePasswordChange} className="form-control" id="password"/>
                     </div>
                     <div className="mb-3 text-center">
-                        <button type="submit" class="btn btn-success">Login</button>
+                        <button type="submit" className="btn btn-success">Login</button>
                     </div>
                     <div className="mb-3 text-center">
                         <CreateAccount/>
